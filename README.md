@@ -1,6 +1,13 @@
 ## About
 
-System purpose : test app for a job.
+System purpose : test app in Lavel.
+
+Tables to use :
+COMPANIES [name]
+POSITIONS [reference,title,description,email]
+
+Task : 
+build small app, use relations between given tables
 
 ## Autor
 
