@@ -52,5 +52,4 @@ Route::group(['prefix' => 'system'], function () {
         Route::post('/edit/{id?}', 'Auth\Panel\PositionsController@update')->name('positions_update')->where('id', '[0-9]+');
         Route::get('/delete/{id}', 'Auth\Panel\PositionsController@delete')->name('positions_delete')->where('id', '[0-9]+');
     });
-
 });

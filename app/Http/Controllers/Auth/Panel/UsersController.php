@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\Auth\Panel;
 
-use App\Companies;
 use App\Http\Controllers\Controller;
-use App\Positions;
 use App\User;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -17,8 +14,6 @@ use Illuminate\View\View;
 class UsersController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
      * @return void
      */
     public function __construct()
@@ -27,8 +22,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
      * @return View
      */
     public function index(): View
@@ -40,12 +33,9 @@ class UsersController extends Controller
         ]);
     }
 
-    public function get()
-    {
-        // TODO
-        dd('TODO');
-    }
-
+    /**
+     * @return View
+     */
     public function add(): View
     {
         return view('auth.system.users_add');

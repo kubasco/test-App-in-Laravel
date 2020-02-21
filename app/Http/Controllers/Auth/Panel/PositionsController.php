@@ -16,8 +16,6 @@ use Illuminate\View\View;
 class PositionsController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
      * @return void
      */
     public function __construct()
@@ -26,8 +24,6 @@ class PositionsController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
      * @return View
      */
     public function index(): View
@@ -37,12 +33,6 @@ class PositionsController extends Controller
         return view('auth.system.positions', [
             'positions' => $positions,
         ]);
-    }
-
-    public function get()
-    {
-        // TODO
-        dd('TODO');
     }
 
     /**

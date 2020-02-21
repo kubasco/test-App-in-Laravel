@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth\Panel;
 use App\Companies;
 use App\Http\Controllers\Controller;
 use App\Positions;
-use App\Products;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -15,8 +14,6 @@ use Illuminate\View\View;
 class CompaniesController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
      * @return void
      */
     public function __construct()
@@ -25,8 +22,6 @@ class CompaniesController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
      * @return View
      */
     public function index(): View
@@ -36,12 +31,6 @@ class CompaniesController extends Controller
         return view('auth.system.companies', [
             'companies' => $companies,
         ]);
-    }
-
-    public function get()
-    {
-        // TODO
-        dd('TODO');
     }
 
     /**

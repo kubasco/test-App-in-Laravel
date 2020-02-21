@@ -6,13 +6,11 @@ use App\Companies;
 use App\Http\Controllers\Controller;
 use App\Positions;
 use App\User;
-use Illuminate\Contracts\Support\Renderable;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
      * @return void
      */
     public function __construct()
@@ -21,11 +19,9 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return Renderable
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
         $users = User::all()->count();;
         $companies = Companies::all()->count();;
