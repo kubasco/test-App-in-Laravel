@@ -86,7 +86,7 @@
                     <a href="{{ route('users') }}"
                        class="btn btn-outline-danger">{{ __('auth.cancel_operation') }}</a>
                     <button type="submit"
-                            class="btn btn-success">{{ __('auth.add') }}</button>
+                            class="btn btn-success">{{ __('auth.save') }}</button>
                 </form>
             </div>
         </div>

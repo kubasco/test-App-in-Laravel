@@ -44,8 +44,13 @@
                                 <td>{{ $position->description }}</td>
                                 <td>{{ $position->email }}</td>
                                 <td>
-                                    <a class="btn btn-outline-info btn-sm" href="{{ route('positions_edit',$position->id) }}">{{ __('auth.edit') }}</a>
-                                    <a class="btn btn-outline-danger btn-sm" href="{{ route('positions_delete',$position->id) }}">{{ __('auth.delete') }}</a>
+                                    <a class="btn btn-outline-info btn-sm"
+                                       href="{{ route('positions_edit',$position->id) }}"
+                                    >{{ __('auth.edit') }}</a>
+                                    <a class="btn btn-outline-danger btn-sm"
+                                       href="{{ route('positions_delete',$position->id) }}"
+                                       onclick="return confirm('{{ __('auth.delete_confirm') }}')"
+                                    >{{ __('auth.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

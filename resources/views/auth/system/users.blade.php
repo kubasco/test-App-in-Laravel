@@ -44,8 +44,12 @@
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->address }}, {{ $user->zip_code }} {{ $user->city }}</td>
                                     <td>
-                                        <a class="btn btn-outline-info btn-sm" href="{{ route('users_edit',$user->id) }}">{{ __('auth.edit') }}</a>
-                                        <a class="btn btn-outline-danger btn-sm" href="{{ route('users_delete',$user->id) }}">{{ __('auth.delete') }}</a>
+                                        <a class="btn btn-outline-info btn-sm"
+                                           href="{{ route('users_edit',$user->id) }}">{{ __('auth.edit') }}</a>
+                                        <a class="btn btn-outline-danger btn-sm"
+                                           href="{{ route('users_delete',$user->id) }}"
+                                           onclick="return confirm('{{ __('auth.delete_confirm') }}')"
+                                        >{{ __('auth.delete') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

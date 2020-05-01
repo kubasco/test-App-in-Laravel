@@ -32,8 +32,13 @@
                                     <td>{{ $company->id }}</td>
                                     <td>{{ $company->name }}</td>
                                     <td>
-                                        <a class="btn btn-outline-info btn-sm" href="{{ route('companies_edit',$company->id) }}">{{ __('auth.edit') }}</a>
-                                        <a class="btn btn-outline-danger btn-sm" href="{{ route('companies_delete',$company->id) }}">{{ __('auth.delete') }}</a>
+                                        <a class="btn btn-outline-info btn-sm"
+                                           href="{{ route('companies_edit',$company->id) }}"
+                                        >{{ __('auth.edit') }}</a>
+                                        <a class="btn btn-outline-danger btn-sm"
+                                           href="{{ route('companies_delete',$company->id) }}"
+                                           onclick="return confirm('{{ __('auth.delete_confirm') }}')"
+                                        >{{ __('auth.delete') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

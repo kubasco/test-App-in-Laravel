@@ -30,6 +30,7 @@ return [
     'name' => 'Name',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'delete_confirm' => 'Do You really want to delete?',
     'action' => 'Action',
     'nip' => 'NIP',
     'city' => 'City',
