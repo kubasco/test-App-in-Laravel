@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Positions;
 use App\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -38,7 +39,11 @@ class UsersController extends Controller
      */
     public function add(): View
     {
-        return view('auth.system.users_add');
+        $positions = Positions::all();
+
+        return view('auth.system.users_add', [
+            'positions' => $positions
+        ]);
     }
 
     /**
@@ -48,9 +53,11 @@ class UsersController extends Controller
     public function edit(Int $id): View
     {
         $user = User::findOrFail($id);
+        $positions = Positions::all();
 
         return view('auth.system.users_edit', [
-            'user' => $user
+            'user' => $user,
+            'positions' => $positions
         ]);
     }
 
@@ -63,6 +70,7 @@ class UsersController extends Controller
     public function update(Request $request, Int $id = null)
     {
         $rules = [
+            'positions_id' => 'required|integer|exists:positions,id',
             'name' => 'required|string|max:128',
             'nip' => 'string|max:128|nullable',
             'email' => 'required|email|max:128|unique:users,email,' . $id,
@@ -95,6 +103,7 @@ class UsersController extends Controller
             $user->email = $request->get('email');
             $user->password = Hash::make($request->get('password'));
         }
+        $user->positions_id = $request->get('positions_id');
         $user->name = $request->get('name');
         $user->nip = $request->get('nip');
         $user->phone = $request->get('phone');

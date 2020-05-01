@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Eloquent;
+use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -57,6 +57,9 @@ class Companies extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
+    /**
+     * @return HasMany
+     */
     public function positions(): HasMany
     {
         return $this->hasMany(Positions::class);

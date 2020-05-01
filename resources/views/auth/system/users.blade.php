@@ -17,6 +17,7 @@
                             <th>{{ __('auth.id') }}</th>
                             <th>{{ __('auth.name') }}</th>
                             <th>{{ __('auth.nip') }}</th>
+                            <th>{{ __('auth.company') }} / {{ __('auth.position') }}</th>
                             <th>{{ __('auth.email') }}</th>
                             <th>{{ __('auth.phone') }}</th>
                             <th>{{ __('auth.address') }}</th>
@@ -28,6 +29,7 @@
                             <th>{{ __('auth.id') }}</th>
                             <th>{{ __('auth.name') }}</th>
                             <th>{{ __('auth.nip') }}</th>
+                            <th>{{ __('auth.company') }} / {{ __('auth.position') }}</th>
                             <th>{{ __('auth.email') }}</th>
                             <th>{{ __('auth.phone') }}</th>
                             <th>{{ __('auth.address') }}</th>
@@ -40,6 +42,13 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->nip }}</td>
+                                    <td>{{
+                                    (isset($user->position->title))
+                                    ?
+                                    ($user->position->company->name.'/'.$user->position->title)
+                                    :
+                                    ''
+                                    }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->address }}, {{ $user->zip_code }} {{ $user->city }}</td>

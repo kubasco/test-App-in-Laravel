@@ -29,6 +29,24 @@
                         </div>
                     </div>
 
+                    <div class=" form-group row">
+                        <label class="col-sm-3 form-control-label">{{ __('auth.company') }} / {{ __('auth.position') }}</label>
+                        <div class="col-sm-9">
+                            <select name="positions_id" class="form-control mb-3 mb-3" autocomplete="off">
+                                @foreach($positions as $position)
+                                    <option value="{{ $position->id }}"
+                                            @if(old('companies_id'))
+                                            @if($position->id ===  old('positions_id')) selected @endif>{{ $position->company->name }} / {{ $position->title }}
+                                        @else
+                                            @if($position->id == $user->position->id) selected @endif
+                                            >{{ $position->company->name }} / {{ $position->title }}
+                                        @endif
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group row" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                         <label class="col-sm-3 form-control-label">{{ __('auth.email') }}</label>
                         <div class="col-sm-9">

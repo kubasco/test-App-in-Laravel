@@ -18,7 +18,6 @@ class DevelopmentSeeder extends Seeder
     {
         $newUsersNumber = 20;
         $newCompaniesNumber = 20;
-        $newPositionsNumber = 10;
 
         /**
          * dev user
@@ -26,13 +25,8 @@ class DevelopmentSeeder extends Seeder
         factory(User::class)->create([
             'name' => 'Admin Account',
             'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('password')
         ]);
-
-        /**
-         * Companies
-         */
-        factory(User::class, $newUsersNumber)->create();
 
         /**
          * Companies
@@ -42,13 +36,21 @@ class DevelopmentSeeder extends Seeder
         /**
          * Positions
          */
+        $positionsIds = 0;
         $references = Config::get('positions.references');
         foreach ($newCompanies as $newCompany) {
             factory(Positions::class, $newCompaniesNumber)->create([
                 'companies_id' => $newCompany->id,
                 'reference' => $references[mt_rand(0, 3)],
             ]);
+            $positionsIds += $newCompaniesNumber;
         }
 
+        /**
+         * Users
+         */
+        factory(User::class, $newUsersNumber)->create([
+            'positions_id' => rand(0, $positionsIds)
+        ]);
     }
 }

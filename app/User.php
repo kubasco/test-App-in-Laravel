@@ -2,7 +2,8 @@
 
 namespace App;
 
-use Eloquent;
+use Barryvdh\LaravelIdeHelper\Eloquent;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,10 +12,12 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
+
 /**
  * App\User
  *
  * @property int $id
+ * @property int|null $positions_id
  * @property string $name
  * @property string|null $nip
  * @property string $email
@@ -30,12 +33,11 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $deleted_at
  * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @method static bool|null forceDelete()
+ * @property-read Positions $position
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static Builder|User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
- * @method static bool|null restore()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
@@ -47,6 +49,7 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNip($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePositionsId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereZipCode($value)
@@ -64,7 +67,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'nip', 'email', 'password', 'phone', 'address', 'zip_code', 'city'
+        'positions_id', 'name', 'nip', 'email', 'password', 'phone', 'address', 'zip_code', 'city'
     ];
 
     protected $dates = ['deleted_at'];
@@ -86,4 +89,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function position(): BelongsTo
+    {
+        return $this->BelongsTo(Positions::class, 'positions_id');
+    }
 }

@@ -43,6 +43,7 @@ return [
     'reference' => 'Reference',
     'title' => 'Title',
     'description' => 'Description',
+    'position' => 'Position',
     'positions' => 'Positions',
     'success' => 'Operation Success !!!',
     'cancel_operation' => 'Cancel',
